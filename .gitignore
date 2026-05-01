@@ -1,0 +1,26 @@
+# 临时文件
+*.tmp
+*.log
+*.bak
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+
+# 备份文件
+*_backup.html
+
+# Node.js
+node_modules/
+package-lock.json
+
+# 测试服务器文件
+test-server.js
+
+# Surge部署缓存
+.surge/
+
+# 系统文件
+Thumbs.db
+.DS_Store
