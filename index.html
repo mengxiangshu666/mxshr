@@ -21,7 +21,7 @@ body{margin:0;padding:0;scroll-behavior:smooth;overflow-x:hidden;background:var(
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--m)}::-webkit-scrollbar-thumb{background:var(--g);border-radius:3px}
 #loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s}#loader.hide{opacity:0;pointer-events:none}#loader span{font-family:"Playfair Display",serif;font-size:4rem;font-weight:900;color:var(--g);animation:pls 1.2s ease-in-out infinite}@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.92)}}
 #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--g),var(--gl));z-index:1000;width:0;transition:width .1s}
-nav{position:fixed;top:0;width:100%;z-index:900;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,backdrop-filter .3s}nav.blur{background:rgba(5,5,5,0.4); backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%); border-bottom:1px solid rgba(200,160,74,0.25);}body.lt nav.blur{background:rgba(245,240,232,.8); backdrop-filter:none; -webkit-backdrop-filter:none;}
+nav{position:fixed;top:0;width:100%;z-index:900;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,backdrop-filter .3s}nav.blur{background:rgba(245,240,232,.85);}
 .nl{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:700;color:var(--g);letter-spacing:.15em;text-decoration:none}
 .nlinks{display:flex;gap:1.8rem;align-items:center}
 .nlinks a{color:var(--t2);text-decoration:none;font-size:.85rem;letter-spacing:.05em;transition:color .2s}a:hover{color:var(--g)}
@@ -77,9 +77,9 @@ footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid rgba(200,160,7
 @media(max-width:480px){section{padding:4rem 1rem}.sg{grid-template-columns:1fr}.stg{grid-template-columns:repeat(2,1fr);gap:.8rem}.sni2{font-size:1.8rem}.sg2{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
+<body class="lt">
 <div id="loader"><span>MXS</span></div>
-<script>setTimeout(function(){var l=document.getElementById('loader');if(l){l.classList.add('hide');setTimeout(function(){l.style.display='none';},700);}},5000);</script>
+<script>setTimeout(function(){var l=document.getElementById("loader");if(l){l.classList.add("hide");setTimeout(function(){l.style.display="none";},700);}},5000);</script>
 <div id="prog"></div>
 <nav id="nav"><a href="#hero" class="nl">MXS</a><div class="nlinks"><a href="#about">关于</a><a href="#stats">数据</a><a href="#skills">能力</a><a href="#timeline">经历</a><a href="#resume">简历</a><a href="#contact">联系</a><button class="nb" id="tBtn" title="切换主题">&#26085;</button><button class="nb" id="mBtn" title="背景音乐">&#9834;</button></div><button id="hg"><span></span><span></span><span></span></button></nav>
 <div id="mm"><a href="#about" onclick="mmC()">关于</a><a href="#stats" onclick="mmC()">数据</a><a href="#skills" onclick="mmC()">能力</a><a href="#timeline" onclick="mmC()">经历</a><a href="#resume" onclick="mmC()">简历</a><a href="#contact" onclick="mmC()">联系</a><button class="nb" id="tBtn2" style="font-size:1.2rem">&#26085;</button></div>
@@ -147,9 +147,9 @@ footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid rgba(200,160,7
 
 <script>
 var words = ["活动主持人","带货主播","培训讲师","新媒体运营","播音主持"];
-var wi=0,ci=0,del=0,isTyping=false;
+var wi=0,ci=0,del=0,closed=false;
 function tw(){
-  if(!isTyping){
+  if(!closed){
     if(del==0){
       if(ci<words[wi].length){
         document.getElementById("tw").textContent+=words[wi][ci];
@@ -227,7 +227,7 @@ function cu(id,start,end,dur){
 document.getElementById("btt").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
 document.getElementById("hg").addEventListener("click",function(){this.classList.toggle("o");document.getElementById("mm").classList.toggle("o");});
 
-var lt=false;
+var lt=true;
 document.getElementById("tBtn").addEventListener("click",function(){
   lt=!lt;document.body.classList.toggle("lt",lt);this.innerHTML=lt?"&#127769;":"&#26085;";
 });
