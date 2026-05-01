@@ -79,6 +79,7 @@ footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid rgba(200,160,7
 </head>
 <body>
 <div id="loader"><span>MXS</span></div>
+<script>setTimeout(function(){var l=document.getElementById('loader');if(l){l.classList.add('hide');setTimeout(function(){l.style.display='none';},700);}},5000);</script>
 <div id="prog"></div>
 <nav id="nav"><a href="#hero" class="nl">MXS</a><div class="nlinks"><a href="#about">关于</a><a href="#stats">数据</a><a href="#skills">能力</a><a href="#timeline">经历</a><a href="#resume">简历</a><a href="#contact">联系</a><button class="nb" id="tBtn" title="切换主题">&#26085;</button><button class="nb" id="mBtn" title="背景音乐">&#9834;</button></div><button id="hg"><span></span><span></span><span></span></button></nav>
 <div id="mm"><a href="#about" onclick="mmC()">关于</a><a href="#stats" onclick="mmC()">数据</a><a href="#skills" onclick="mmC()">能力</a><a href="#timeline" onclick="mmC()">经历</a><a href="#resume" onclick="mmC()">简历</a><a href="#contact" onclick="mmC()">联系</a><button class="nb" id="tBtn2" style="font-size:1.2rem">&#26085;</button></div>
@@ -146,9 +147,9 @@ footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid rgba(200,160,7
 
 <script>
 var words = ["活动主持人","带货主播","培训讲师","新媒体运营","播音主持"];
-var wi=0,ci=0,del=0,closed=false;
+var wi=0,ci=0,del=0,isTyping=false;
 function tw(){
-  if(!closed){
+  if(!isTyping){
     if(del==0){
       if(ci<words[wi].length){
         document.getElementById("tw").textContent+=words[wi][ci];
